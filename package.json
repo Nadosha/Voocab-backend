@@ -1,0 +1,53 @@
+{
+  "name": "voocab-back-end",
+  "version": "0.1.1",
+  "description": "Private GraphQL API server for Voocab mobile application",
+  "main": "apollo.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run db:local:on && NODE_ENV=development APP_ENV=LOCAL nodemon",
+    "db:mongo:local": "mongod --port 27017 --dbpath ./.local/db/",
+    "db:local:on": "brew services start mongodb-community",
+    "db:local:off": "brew services stop mongodb-community"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nadosha/Voocab-backend.git"
+  },
+  "keywords": [
+    "voocab",
+    "learn",
+    "languages"
+  ],
+  "author": "Andrii Ndha",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nadosha/Voocab-backend/issues"
+  },
+  "homepage": "https://github.com/Nadosha/Voocab-backend#readme",
+  "dependencies": {
+    "@babel/core": "^7.18.5",
+    "@babel/preset-typescript": "^7.17.12",
+    "apollo-server-express": "^3.8.2",
+    "express": "^4.18.1",
+    "graphql": "^15.6.0",
+    "graphql-tools": "^8.2.0",
+    "mongoose": "^6.0.7",
+    "tsconfig-paths": "^4.0.0",
+    "typescript": "^4.7.3"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^8.2.0",
+    "@types/express": "^4.17.13",
+    "@types/express-graphql": "^0.9.0",
+    "@types/graphql": "^14.5.0",
+    "@types/mongoose": "^5.11.97",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
+    "babel-loader": "^8.2.2",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^2.0.12",
+    "prettier": "2.4.1",
+    "ts-node": "^10.8.1"
+  }
+}
