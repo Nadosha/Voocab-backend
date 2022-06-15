@@ -1,8 +1,8 @@
-import { Steps } from "./model";
+import { Posts } from "./model";
 
 export const Query = {
-  getProgress: async () => {
-    return Steps.find();
+  getPosts: async () => {
+    return Posts.find();
   },
 };
 
@@ -10,13 +10,13 @@ export const Mutation = {
   createProgress: async (parent, args, context, info) => {
     // For future realization - currently is released but not used
     const { steps } = args;
-    Steps.insertMany(steps).catch((err) => console.log(err));
-    return Steps.find();
+    Posts.insertMany(steps).catch((err) => console.log(err));
+    return Posts.find();
   },
 
   updateProgress: async (parent, args, context, info) => {
     const { stepId, todoId, value } = args.step;
-    let updatedDoc = await Steps.findOneAndUpdate(
+    let updatedDoc = await Posts.findOneAndUpdate(
       { _id:  stepId, "toDo._id": todoId },
       {
         $set: {
@@ -27,7 +27,7 @@ export const Mutation = {
     ).then((res) => {
       // Tasks cannot be marked as completed unless all tasks in the previous phase were completed.
       const isCompleted = res.toDo.every((val) => val.completed === true);
-      return Steps.findOneAndUpdate(
+      return Posts.findOneAndUpdate(
           { _id: stepId },
           {
             $set: {

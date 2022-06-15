@@ -1,28 +1,18 @@
 import * as mongoose from "mongoose";
 
-const todoSchema = new mongoose.Schema({
-  title: {
-    type: String,
-    required: false,
-  },
-  completed: {
-    type: Boolean,
-    required: false,
-  },
-});
-const StepsSchema = new mongoose.Schema({
+const postsSchema = new mongoose.Schema({
   title: {
     type: String,
     required: true,
   },
-  isCompleted: {
-    type: Boolean,
+  description: {
+    type: String,
     required: false,
   },
-  toDo: {
-    type: [todoSchema],
-    required: true,
-  },
+  imgUrl: {
+    type: String,
+    required: true
+  }
 });
 
-export const Steps = mongoose.model("steps", StepsSchema);
+export const Posts = mongoose.model("posts", postsSchema);

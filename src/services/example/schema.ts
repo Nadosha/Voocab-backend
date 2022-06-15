@@ -1,41 +1,36 @@
 import { gql } from "apollo-server-express";
 
 export const startupProgress = gql`
-  type Todo {
+  type Post {
     id: ID
     title: String
-    completed: Boolean
-  }
-  type Step {
-    id: ID
-    title: String
-    isCompleted: Boolean
-    toDo: [Todo]
+    description: String
+    imgUrl: String
   }
   type Query {
-    getProgress: [Step]
+    getPosts: [Post]
   }
-  input TodoInput {
+  input PostInput {
     id: ID
     title: String
-    completed: Boolean
+    completed: String
   }
   type createProgressPayload {
-    steps: [Step]
+    steps: [Post]
   }
-  input StepsInput {
+  input PostsInput {
     id: ID
     title: String
-    isCompleted: Boolean
-    toDo: [TodoInput]
+    description: String
+    imgUrl: String
   }
-  input UpdateStepsInput {
-    stepId: ID
-    todoId: String
-    value: Boolean
+  input UpdatePostsInput {
+    title: String
+    description: String
+    imgUrl: String
   }
   type Mutation {
-    createProgress(steps: [StepsInput!]!): [Step]
-    updateProgress(step: UpdateStepsInput): Step
+    createProgress(posts: [PostsInput!]!): [Post]
+    updateProgress(post: UpdatePostsInput): Post
   }
 `;
